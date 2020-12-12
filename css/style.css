@@ -1,0 +1,46 @@
+.logo{
+    width: 40px;
+    height: 40px;
+}
+.logo2{
+    width: 15px;
+    height: 15px;
+}
+.logo1{
+    width: 30px;
+    height: 30px;
+}
+.cbox{
+    border-bottom: 1px solid lightgray;
+}
+.adiv{
+    max-height: 50em;
+    background-color: lightgray;
+    border: 1px solid white;
+}
+.bdiv{
+    text-align: left;
+}
+.cdiv{
+    text-align: right;
+}
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+  }
+.form-container input[type=text] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+.form-container input[type=text]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.hide{
+    display: none;
+}

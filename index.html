@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title> Unergia </title>
+    <link rel="icon" href="images/favicon.png">
+</head>
+<body>
+    <div class="container-fluid navbar-light bg-light cbox">
+        <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="#">
+                <img src="images/index.png" class="logo"> Unergia
+            </a>
+            <ul class="navbar-nav ml-auto">
+                <a class="nav-item nav-link" href="#">
+                    <img src="images/logout.png" class="logo"> LOGOUT
+                </a>
+            </ul>
+        </nav>
+    </div>
+    </div>
+    <div class="container-fluid navbar-light bg-light cbox">
+        <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <button type="button" class="navbar-toggler" 
+            data-toggle="collapse" data-target="#myMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="myMenu">
+                <ul class="navbar-nav">
+                    <a class="nav-item nav-link" href="#">
+                        <img src="images/crm.png" class="logo1"> CRM
+                    </a>
+                    <a class="nav-item nav-link" href="#">
+                        <img src="images/tasks.png" class="logo1"> Tasks
+                    </a>
+                    <a class="nav-item nav-link" href="#">
+                        <img src="images/profile.png" class="logo1"> Profile
+                    </a>
+                    <a class="nav-item nav-link" href="#">
+                        <img src="images/user.png" class="logo1"> Add New User
+                    </a>
+                    <a class="nav-item nav-link" href="#">
+                        <img src="images/settings.png" class="logo1"> Settings
+                    </a>
+                    <a class="nav-item nav-link" href="#">
+                        <img src="images/analytics.png" class="logo1"> Analytics
+                    </a>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2 bdiv"><h3><strong>CRM</strong></h3></div>
+            <div class="col-sm-8"></div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#Modal">
+                    <img src="images/plus.png" class="logo2"> Add Project
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <form id="add-project-form" class="form-container">
+                                    <input type="text" name="name" placeholder="Name">
+                                    <input type="text" name="req" placeholder="Order">
+                                    <button class="btn btn-secondary">Save</button>
+                                    <button class="btn btn-secondary" data-dismiss="modal" onclick="close()">Close</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 adiv" style="overflow-y: scroll; text-align: center;"><h5><strong>Enquiry</strong></h5>
+                <div id="user"></div>
+                <button type="button" class="btn btn-secondary btn-block" onclick="load()">Load</button>
+            </div>
+            <div class="col-sm-4 adiv" style="overflow-y: scroll; text-align: center;"><h5><strong>Site Visit</strong></h5>
+                <!-- <button type="button" class="btn btn-secondary btn-block" onclick="load()">Load</button> -->
+            </div>
+            <div class="col-sm-4 adiv" style="overflow-y: scroll; text-align: center;"><h5><strong>Won</strong></h5>
+                <!-- <button type="button" class="btn btn-secondary btn-block" onclick="load()">Load</button> -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyAhjYQxpSHg-kMiUQBGWOBHT2-mAcYebcg",
+        authDomain: "unergia-20e79.firebaseapp.com",
+        projectId: "unergia-20e79",
+        storageBucket: "unergia-20e79.appspot.com",
+        messagingSenderId: "902905958175",
+        appId: "1:902905958175:web:5883f10ecc6736d7a4aa2a",
+        measurementId: "G-X14D3S34T8"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    db.settings({timestampsInSnapshots: true});
+    </script>
+    <script src="js/app.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
