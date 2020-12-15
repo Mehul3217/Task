@@ -66,6 +66,8 @@ function dragndrop(card,list_i,doc,drag)
     console.log(list_i);
     card.addEventListener('dragstart', function(e) {
         e.stopPropagation();
+        drag  = card;
+        idd = doc.id;
         console.log('drag started');
         console.log(doc.id);
         setTimeout(function(){
@@ -78,6 +80,8 @@ function dragndrop(card,list_i,doc,drag)
         console.log(doc.id);
         setTimeout(function() {
             card.style.display = 'block';
+            drag = null;
+            idd = null;
         }, 0);
     });
     for(let j=0;j<lists.length;j++)
@@ -93,35 +97,38 @@ function dragndrop(card,list_i,doc,drag)
         })
         list.addEventListener('drop', function(e){
             e.stopPropagation();
-            this.append(card);
-            if(this.id == "Site_Visit")
+            if(drag!=null)
             {
-                db.collection('Site_Visit').add({
-                    Name: doc.data().Name,
-                    Req: doc.data().Req,
-                    Date: doc.data().Date,
-                    Id: 1
-                })
+                this.append(drag);
+                if(this.id == "Site_Visit")
+                {
+                    db.collection('Site_Visit').add({
+                        Name: doc.data().Name,
+                        Req: doc.data().Req,
+                        Date: doc.data().Date,
+                        Id: 1
+                    })
+                }
+                else if(this.id == "Enquiry")
+                {
+                    db.collection('Enquiry').add({
+                        Name: doc.data().Name,
+                        Req: doc.data().Req,
+                        Date: doc.data().Date,
+                        Id: 1
+                    })
+                }
+                else
+                {
+                    db.collection('Won').add({
+                        Name: doc.data().Name,
+                        Req: doc.data().Req,
+                        Date: doc.data().Date,
+                        Id: 1
+                    })
+                }
+                db.collection(list_i).doc(idd).delete();
             }
-            else if(this.id == "Enquiry")
-            {
-                db.collection('Enquiry').add({
-                    Name: doc.data().Name,
-                    Req: doc.data().Req,
-                    Date: doc.data().Date,
-                    Id: 1
-                })
-            }
-            else
-            {
-                db.collection('Won').add({
-                    Name: doc.data().Name,
-                    Req: doc.data().Req,
-                    Date: doc.data().Date,
-                    Id: 1
-                })
-            }
-            db.collection(list_i).doc(doc.id).delete();
         })
     }
 }
@@ -132,8 +139,8 @@ db.collection('Enquiry').get().then(snapshot => {
     {
         let card = make_card(data[i]);
         Enquiry.appendChild(card);
-        let drag = null;
-        dragndrop(card,'Enquiry',data[i],drag);
+        let drag = null,idd = null;
+        dragndrop(card,'Enquiry',data[i],drag,idd);
     }
 })
 
@@ -143,8 +150,8 @@ db.collection('Won').get().then(snapshot => {
     {
         let card = make_card(data[i]);
         Won.appendChild(card);
-        let drag = null;
-        dragndrop(card,'Won',data[i],drag);
+        let drag = null,idd = null;
+        dragndrop(card,'Won',data[i],drag,idd);
     }
 })
 
@@ -154,8 +161,8 @@ db.collection('Site_Visit').get().then(snapshot => {
     {
         let card = make_card(data[i]);
         Site_Visit.appendChild(card);
-        let drag = null;
-        dragndrop(card,'Site_Visit',data[i],drag);
+        let drag = null,idd = null;
+        dragndrop(card,'Site_Visit',data[i],drag,idd);
     }
 })
 
