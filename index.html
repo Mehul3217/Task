@@ -77,8 +77,8 @@
                         <div class="modal-content">
                             <div class="modal-body">
                                 <form id="add-project-form" class="form-container">
-                                    <input type="text" name="name" placeholder="Name">
-                                    <input type="text" name="req" placeholder="Order">
+                                    <input type="text" name="name" placeholder="Name" required="true">
+                                    <input type="text" name="req" placeholder="Order" required="true">
                                     <button class="btn btn-secondary">Save</button>
                                     <button class="btn btn-secondary" data-dismiss="modal" onclick="close()">Close</button>
                                 </form>
@@ -91,15 +91,17 @@
         <br>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-4 adiv" style="overflow-y: scroll; text-align: center;"><h5><strong>Enquiry</strong></h5>
-                <div id="user"></div>
-                <button type="button" class="btn btn-secondary btn-block" onclick="load()">Load</button>
+        <div class="lists">
+            <div class="list" id="Enquiry">
+                <h5 style="text-align: center;"><strong>Enquiry</strong></h5>
             </div>
-            <div class="col-sm-4 adiv" style="overflow-y: scroll; text-align: center;"><h5><strong>Site Visit</strong></h5>
+            <!-- <button type="button" class="btn btn-secondary btn-block" onclick="load()">Load</button> -->
+            <div class="list" id="Site_Visit">
+                <h5 style="text-align: center;"><strong>Site Visit</strong></h5>
                 <!-- <button type="button" class="btn btn-secondary btn-block" onclick="load()">Load</button> -->
             </div>
-            <div class="col-sm-4 adiv" style="overflow-y: scroll; text-align: center;"><h5><strong>Won</strong></h5>
+            <div class="list" id="Won">
+                <h5 style="text-align: center;"><strong>Won</strong></h5>
                 <!-- <button type="button" class="btn btn-secondary btn-block" onclick="load()">Load</button> -->
             </div>
         </div>
